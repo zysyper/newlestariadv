@@ -6,32 +6,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 
 Route::get('/products', function () {
     return view('pages.produk');
 })->name('produk');
-
-
 Route::get('/products/{slug}', function ($slug) {
     return view('pages.product-detail', compact('slug'));
 })->name('produk.detail');
-
-Route::post('/payment/{order}', [MyOrderController::class, 'payment'])->name('orders.payment');
-// Home page route
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// Categories page route
 Route::get('/categories', [HomeController::class, 'kategori'])->name('kategori');
 
 // Products by category route
@@ -57,7 +39,6 @@ Route::middleware('guest')->group(function () {
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 });
 
-// Logout (for authenticated users)
 
 
 Route::middleware('auth')->group(function () {
@@ -68,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/myorder', [MyOrderController::class, 'index'])->name('my-orders');
     Route::get('/myorder/{order}', [MyOrderController::class, 'show'])->name('orders.show');
+    Route::post('/payment/{order}', [MyOrderController::class, 'payment'])->name('orders.payment');
+    Route::patch('/myorder/{order}/cancel', [MyOrderController::class, 'cancel'])->name('orders.cancel');
     Route::get('/cart', function () {
     return view('pages.cart');
     });
@@ -77,7 +60,5 @@ Route::middleware('auth')->group(function () {
 
 
 // Add this route to your web.php file
-Route::patch('/myorder/{order}/cancel', [MyOrderController::class, 'cancel'])
-    ->name('orders.cancel')
-    ->middleware('auth');
+
 
