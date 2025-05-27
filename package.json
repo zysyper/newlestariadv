@@ -1,19 +1,22 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.21",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0.0",
-        "postcss": "^8.5.3",
-        "tailwindcss": "3.4",
-        "vite": "^6.3.5"
-    },
-    "dependencies": {
-        "preline": "^2.0.0"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "php artisan serve --host=0.0.0.0 --port=8000",
+    "tunnel": "lt --port 8000 --subdomain lestariadv",
+    "tai": "lt --port 5173 --subdomain lestariadv-vite"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.6.4",
+    "laravel-vite-plugin": "^1.0.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "3.4",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "preline": "^2.0.0"
+  }
 }
