@@ -19,7 +19,6 @@ class order extends Model
         'currency',
         'original_name',
         'file_path',
-        'file_path',
         'notes',
         'catatan'
     ];

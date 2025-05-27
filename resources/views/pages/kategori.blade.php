@@ -4,8 +4,8 @@
 <div>
     <div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
         <!-- Page Header -->
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Kategori Produk</h1>
+        <div class="mb-10 text-center">
+            <h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Kategori Produk</h1>
             <p class="text-lg text-gray-600 dark:text-gray-400">Pilih kategori produk yang Anda inginkan</p>
         </div>
 
@@ -17,7 +17,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     @if($kategori->image)
-                                        <img class="h-[5rem] w-[5rem] rounded-lg object-cover" src="{{ url('storage', $kategori->image) }}" alt="{{ $kategori->name }}">
+                                        <img class="h-[5rem] w-[5rem] rounded-lg object-cover" src="{{ asset('storage/' . $kategori->image) }}" alt="{{ $kategori->name }}">
                                     @else
                                         <div class="h-[5rem] w-[5rem] rounded-lg bg-gray-200 flex items-center justify-center">
                                             <svg class="w-8 h-8 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,7 +30,7 @@
                                             {{ $kategori->name }}
                                         </h3>
                                         @if($kategori->deskripsi)
-                                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                                                 {{ Str::limit($kategori->deskripsi, 100) }}
                                             </p>
                                         @endif
@@ -52,7 +52,7 @@
                         </div>
                     </a>
                 @empty
-                    <div class="col-span-full py-10 text-center">
+                    <div class="py-10 text-center col-span-full">
                         <svg class="w-12 h-12 mx-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                             <line x1="8" y1="21" x2="16" y2="21"/>
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Back to Home Button -->
-        <div class="text-center mt-8">
+        <div class="mt-8 text-center">
             <a href="{{ route('home') }}" class="inline-flex items-center px-6 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />

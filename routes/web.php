@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.place');
     Route::get('/checkout/success/{order?}', [CheckoutController::class, 'success'])->name('checkout.success');
-    Route::get('/order/{order}', [CheckoutController::class, 'show'])->name('order.show');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/myorder', [MyOrderController::class, 'index'])->name('my-orders');
     Route::get('/myorder/{order}', [MyOrderController::class, 'show'])->name('orders.show');

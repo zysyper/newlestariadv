@@ -50,20 +50,6 @@ class CheckoutController extends Controller
             return redirect()->back()->with('error', 'Keranjang belanja kosong.');
         }
 
-        // Siapkan line items jika diperlukan untuk pembayaran
-        $line_items = [];
-        foreach ($cart_items as $item) {
-            $line_items[] = [
-                'price_data' => [
-                    'currency' => 'IDR',
-                    'unit_amount' => $item['unit_amount'] * 100,
-                    'product_data' => [
-                        'name' => $item['name'],
-                    ],
-                ],
-                'quantity' => $item['quantity'],
-            ];
-        }
 
         // Handle file upload
         $file_path = null;
@@ -128,14 +114,16 @@ class CheckoutController extends Controller
                          ->first();
         }
 
+        // Get user details
+                $user = User::find(Auth::id());
+
         // Jika tidak ada order, redirect ke home
         if (!$order) {
             return redirect()->route('home')
                            ->with('error', 'Order tidak ditemukan.');
         }
 
-        // Get user details
-        $user = User::find(Auth::id());
+
 
         return view('pages.succes-page', [
             'order' => $order,
@@ -143,21 +131,4 @@ class CheckoutController extends Controller
         ]);
     }
 
-    /**
-     * Show order details
-     */
-    public function show($orderId)
-    {
-        $order = Order::where('user_id', Auth::id())
-                     ->where('id', $orderId)
-                     ->with('items')
-                     ->first();
-
-        if (!$order) {
-            return redirect()->route('home')
-                           ->with('error', 'Order tidak ditemukan.');
-        }
-
-        return view('order-detail', compact('order'));
-    }
 }

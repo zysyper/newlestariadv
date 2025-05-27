@@ -51,8 +51,10 @@
                     @forelse ($produks as $produk)
                         <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                             <div class="flex flex-col items-center justify-center bg-blue-100 h-52 rounded-t-xl">
-                                @if(!empty($produk->images) && is_array($produk->images) && count($produk->images) > 0)
-                                    <img class="object-cover w-full h-full rounded-t-xl" src="{{ url('storage', $produk->images[0]) }}" alt="{{ $produk->name }}">
+                                @if (!empty($produk->images) && is_array($produk->images) && count($produk->images) > 0)
+                                    <img class="object-cover w-full h-full rounded-t-xl"
+                                        src="{{ asset('storage/' . $produk->images[0]) }}"
+                                        alt="{{ $produk->name }}">
                                 @else
                                     <div class="flex items-center justify-center w-full h-full bg-gray-200 rounded-t-xl">
                                         <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -158,7 +160,7 @@
                     <div class="p-6 md:p-8">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
-                                <img class="w-16 h-16 rounded-full" src="{{ url('storage', $kategori->image) }}" alt="{{ $kategori->name }}">
+                                <img class="h-[5rem] w-[5rem] rounded-lg object-cover" src="{{ asset('storage/' . $kategori->image) }}" alt="{{ $kategori->name }}">
                                 <div class="ms-4">
                                     <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600 dark:group-hover:text-gray-400 dark:text-gray-200">
                                         {{ $kategori->name }}

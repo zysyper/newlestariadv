@@ -213,7 +213,7 @@
                             <div class="relative overflow-hidden group">
                                 <div class="bg-gray-100 aspect-w-4 aspect-h-3 dark:bg-gray-700">
                                     @if(!empty($produk->images) && is_array($produk->images) && count($produk->images) > 0)
-                                        <img class="object-cover w-full h-full transition-transform duration-500 transform group-hover:scale-110" src="{{ url('storage', $produk->images[0]) }}" alt="{{ $produk->name }}">
+                                        <img class="object-cover w-full h-full transition-transform duration-500 transform group-hover:scale-110" src="{{ asset('storage/' . $produk->images[0]) }}"alt="{{ $produk->name }}">
                                     @else
                                         <div class="flex items-center justify-center w-full h-full bg-gray-200 dark:bg-gray-700">
                                             <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -307,7 +307,8 @@
                                 </div>
 
                                 @if(!empty($produk->images) && is_array($produk->images) && count($produk->images) > 0)
-                                    <img class="object-cover w-full h-full transition-transform duration-500 transform group-hover:scale-110" src="{{ url('storage', $produk->images[0]) }}" alt="{{ $produk->name }}">
+                                    <img class="object-cover w-full h-full transition-transform duration-500 transform group-hover:scale-110" src="{{ asset('storage/' . $produk->images[0]) }}"
+                                        alt="{{ $produk->name }}">
                                 @else
                                     <div class="flex items-center justify-center w-full h-full bg-gray-200 dark:bg-gray-700">
                                         <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

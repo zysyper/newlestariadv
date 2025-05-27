@@ -274,7 +274,7 @@
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         @forelse($relatedProducts ?? [] as $related)
         <div class="overflow-hidden transition-shadow duration-300 bg-white shadow-lg rounded-xl dark:bg-gray-700 group hover:shadow-xl">
-            <a href="{{ route('produk.show', $related) }}" class="relative block h-64 overflow-hidden">
+            <a href="{{ route('produk.detail', $related) }}" class="relative block h-64 overflow-hidden">
                 <img src="{{ $related->image_url ?? url('storage/' . $related->images[0]) }}" alt="{{ $related->name }}" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105">
                 @if($related->on_sale)
                 <span class="absolute px-3 py-1 text-sm font-semibold text-white bg-red-500 rounded-lg top-3 left-3">Sale</span>
@@ -286,7 +286,7 @@
                     {{ $related->kategori->name }}
                 </a>
 
-                <a href="{{ route('produk.show', $related) }}" class="block mt-3 text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 line-clamp-2">
+                <a href="{{ route('produk.detail', $related) }}" class="block mt-3 text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 line-clamp-2">
                     {{ $related->name }}
                 </a>
 
